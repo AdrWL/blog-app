@@ -1,22 +1,23 @@
 import * as React from "react";
+import Header from "./components/header/Header";
 import './App.css';
+import {Route, Routes} from "react-router-dom";
+import {SearchContext} from './contexts/search.context'
+import MainPage from "./components/mainpage/MainPage";
+import CreatePost from "./components/createpost/CreatePost";
+import {useState} from "react";
 
 function App() {
+    const [search, setSearch] = useState('')
+
     return (
-        <>
-            <div className="nav">
-                <div className="nav_container">
-                    <div className="nav_element">
-                        <div className="menu">
-                            <div className="nav_list">
-                                <a href="/mainpage">Strona główna</a>
-                                <a href="/createpost">Stwórz post</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </>
+        <SearchContext.Provider value={{search, setSearch}}>
+            <Header/>
+            <Routes>
+                <Route path="/" element={<MainPage/>}/>
+                <Route path="/add" element={<CreatePost/>}/>
+            </Routes>
+        </SearchContext.Provider>
     );
 }
 

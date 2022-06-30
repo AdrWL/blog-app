@@ -1,0 +1,43 @@
+.nav_container {
+    display: grid;
+    grid-template-columns: repeat(14, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    justify-content: center;
+}
+
+.nav_element {
+    height: 28%;
+    grid-area: 3 / 2 / 14 / 14;
+    display: flex;
+    justify-content: center;
+    border-radius: 12px 12px 0 0;
+    background: rgb(26, 39, 67);
+    color: rgb(255, 255, 255);
+}
+
+.menu {
+    display: flex;
+    align-self: center;
+}
+
+.nav_list {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    text-align: center;
+    width: 100%;
+}
+
+.nav_list a {
+    text-decoration: none;
+    color: #000000;
+    padding: 10px;
+    margin: 10px;
+}
+
+.search form input{
+    text-decoration: none;
+    color: #000000;
+    padding: 10px;
+    margin: 10px;
+}
