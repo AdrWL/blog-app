@@ -1,21 +1,17 @@
 import * as React from "react";
 import './CreatePost.css';
 import {SyntheticEvent, useState} from "react";
-import {Connect, typesConnect} from "../axios/posts";
-import {NewAdEntity, NewArticleAdEntity} from 'types';
+import {NewAdEntity} from 'types';
 import axios from "axios";
 
 function CreatePost() {
-    // const [title, setTitle] = useState('')
-    // const [description, setDescription] = useState('')
-    // const [createdAt, setCreatedAt] = useState('')
     const [loading, setLoading] = useState(false);
     const [id, setId] = useState('');
     const [date, setDate] = useState('');
     const [post, setPost] = useState<NewAdEntity>({
         title: '',
         description: '',
-        // createdAt: new Date().toISOString().slice(0, 10)
+        createdAt: new Date().toISOString().slice(0, 10)
     })
 
 
@@ -40,29 +36,11 @@ function CreatePost() {
         }
     };
 
-    //     try {
-    //         const json = JSON.stringify(post)
-    //         const res = await Connect.createID(json)
-    //         const data = await res.data;
-    //         setId(data);
-    //     } finally {
-    //         setLoading(false);
-    //     }
-    // };
+    if (loading === null) {
+        return <h1>Error loading</h1>;
+    }
 
-
-    //
-    // const submitPost = () => {
-    //         Connect.createPost()
-    //             .then((data) => {
-    //                 return JSON.stringify(post)
-    //             })
-    //             .catch((err) => {
-    //                 console.log(err);
-    //             });
-    // }
-
-    const updateForm = (key: string, value: any) => {
+    const updateForm = (key: string, value: string | number) => {
         setPost(post => ({
             ...post,
             [key]: value,
@@ -93,7 +71,6 @@ function CreatePost() {
                                             id="title"
                                             type="text"
                                             // value={title}
-                                            // onChange={e => setTitle(e.target.value)}
                                             onChange={e => updateForm('title', e.target.value)}
                                             required>
                                         </input>
@@ -109,7 +86,6 @@ function CreatePost() {
                                             id="description"
                                             placeholder="Twój post"
                                             // value={description}
-                                            // onChange={e => setDescription(e.target.value)}
                                             onChange={e => updateForm('description', e.target.value)}
                                             required>
                                         </textarea>
@@ -124,10 +100,7 @@ function CreatePost() {
                                             id="createdAt"
                                             type="date"
                                             // value={createdAt}
-                                            // onChange={e => updateForm('createdAt', e.target.value)}
-                                            placeholder="Twój e-mail*"
-                                            name="email"
-                                            // required
+                                            onChange={e => updateForm('createdAt', e.target.value)}
                                         >
                                         </input>
                                     </td>

@@ -1,70 +1,28 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import './MainPage.css';
 import {useEffect, useState} from "react";
-import {Connect} from "../axios/posts";
-import {NewAdEntity} from 'types';
-import {AxiosResponse} from "axios";
-import PostsList from "../postalist/PostsList";
+import axios from "axios";
 
 function MainPage() {
-
-    const [posts, setPosts] = useState<NewAdEntity>({
-        id: '',
-        description: '',
-        title: '',
-    })
+    const [posts, setPosts] = useState(null)
 
 
-    //     const createPost = async () => {
-//         let res = await axios.post('/create', {
-//             title: title,
-//             description: description,
-//             createdAt: createdAt,
-//         });
-//         console.log(res)
-//     }
-// };
+    const fetchData = async () => {
+            await axios.get(`$http://localhost:3001/api`).then((data) => {
+                setPosts(data.data);
+                console.log(data.data);
+            });
+    };
 
-    // useEffect(() => {
-    //         const fetchPosts = async () => {
-    //             await axios
-    //                 .get<NewAdEntity[]>('/')
-    //                 .then((response: AxiosResponse) => {
-    //                     setPosts(response.data)
-    //                     console.log(response.data);
-    //                 });
-    //         }
-    //         fetchPosts();
-    //     }
-    // )
+    useEffect(() => {
+        fetchData();
+    }, []);
 
-    // useEffect(() => {
-    //     const fetchPosts = async () => {
-    //             const response = await axios.get('/');
-    //             setPosts(response.data);
-    //     }
-    //     fetchPosts();
-    // }, [])
 
-    // useEffect(()=>{
-    //     Connect.getPost()
-    //         .then((data) => {
-    //             setPosts(data);
-    //         })
-    //         .catch((err) => {
-    //             console.log(err);
-    //         });
-    // },[])
-
-    return (
-        <>
-            <div className="mainpage">
-                <Fragment>
-                    <PostsList {...posts} />
-                </Fragment>
-            </div>
-        </>
-    );
+    return <>
+        <h1>Posty</h1>
+        {posts}
+    </>;
 }
 
 export default MainPage;

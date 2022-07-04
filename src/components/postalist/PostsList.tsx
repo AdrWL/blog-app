@@ -1,13 +1,6 @@
 import React, {Fragment } from 'react';
 import {NewAdEntity} from 'types';
 
-// interface UserListProps {
-//     id: '',
-//     description: '',
-//     title: '',
-//     createdAt: Date,
-// };
-
 const PostsList = (props:NewAdEntity) => {
     return (
         <Fragment>
