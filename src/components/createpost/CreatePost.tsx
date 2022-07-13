@@ -1,5 +1,6 @@
 import * as React from "react";
 import './CreatePost.css';
+import '../mainpage/MainPage.css';
 import {SyntheticEvent, useState} from "react";
 import {NewAdEntity} from 'types';
 import axios from "axios";
@@ -38,7 +39,24 @@ function CreatePost() {
     };
 
     if (loading === null) {
-        return <h1>Wczytywanie</h1>;
+        return (
+            <div className="spiner_container">
+                <div className="lds-spinner">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        )
     }
 
     const updateForm = (key: string, value: string | number) => {
@@ -49,7 +67,15 @@ function CreatePost() {
     };
 
     if (id) {
-        return  <Link to="/"><h2>Twój post "{post.title}" został poprawnie dodany do serwisu pod ID: {id} dnia {date}.</h2>Powrót</Link>;
+        return (
+            <div className="add-info-container">
+                <div className="add-info">
+                    <Link className="add-info-link" to="/">Twój post "{post.title}" został poprawnie opublikowany z
+                        dniem {date}</Link>
+                    <Link className="add-info-back" to="/">Powrót</Link>
+                </div>
+            </div>
+        )
     }
 
     return (

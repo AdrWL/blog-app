@@ -1,7 +1,7 @@
 .add-post {
     margin: auto;
     border-radius: 12px;
-    background: linear-gradient(90deg, #f5f5f5, #efdddd);
+    background: linear-gradient(90deg, rgba(245, 245, 245, 0), rgba(247, 92, 3, 0.27));
     padding: 2vh;
     width: 70%;
 }
@@ -59,10 +59,42 @@
 .add-post-btn_click {
     padding: 1rem 2rem;
     border-radius: 5rem;
-    background: linear-gradient(90deg, #f8f6f6, #ce080d);
+    background: linear-gradient(90deg, #f8f6f6, #f75c03);
     color: #030303;
-    font-size: .7rem;
+    font-size: .8rem;
     border: none;
     outline: none;
     cursor: pointer;
+}
+
+.add-info-container {
+    margin: auto;
+    border-radius: 12px;
+    background: linear-gradient(90deg, rgba(245, 245, 245, 0), rgba(247, 92, 3, 0.27));
+    padding: 2vh;
+    width: 70%;
+}
+
+.add-info {
+    color: #030303;
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.add-info-link {
+    text-decoration: none;
+    color: #030303
+}
+
+.add-info-back {
+    text-decoration: none;
+    width: 150px;
+    margin: 4px;
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+    border-radius: 12px;
+    padding: 4px 6px;
+    background: rgb(237, 114, 77);
+    box-shadow: 2px 12px 8px -10px rgba(0, 0, 0, 0.3);
 }

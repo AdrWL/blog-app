@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom";
 import PostEdit from "./PostEdit";
 import PostSingleView from "./PostSingleView";
 import axios from "axios";
+import './PostView.css';
 
 const PostView = () => {
     const [isShown, setIsShown] = useState(true);
@@ -18,18 +19,18 @@ const PostView = () => {
         setIsShownEdit(current => !current);
     }
 
-    const toggle = (e: SyntheticEvent)  => {
-        if(buttonText=="Wróć") {
+    const toggle = (e: SyntheticEvent) => {
+        if (buttonText == "Wróć") {
             setButtonText("Edytuj")
-        } else if(buttonText=="Edytuj") {
+        } else if (buttonText == "Edytuj") {
             setButtonText("Wróć")
         }
     }
 
     const onClick = (e: SyntheticEvent) => {
         e.preventDefault();
-            handleClick(e);
-            toggle(e)
+        handleClick(e);
+        toggle(e)
     }
 
     useEffect(() => {
@@ -44,10 +45,12 @@ const PostView = () => {
     }
 
     return <>
-        <div>
-            {isShown && <PostSingleView post={postInfo} />}
-            <button onClick={onClick}>{buttonText}</button>
-            {isShownEdit && <PostEdit postsID={postID} />}
+        <div className="post-single-view-container">
+            {isShown && <PostSingleView post={postInfo}/>}
+            <div className="edit-button-div">
+                <button className="edit-button" onClick={onClick}>{buttonText}</button>
+            </div>
+            {isShownEdit && <PostEdit postsID={postID}/>}
         </div>
     </>;
 };

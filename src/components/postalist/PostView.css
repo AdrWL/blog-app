@@ -1,0 +1,18 @@
+.edit-button-div {
+    position: absolute;
+    top: 31%;
+    right: 2%;
+}
+
+.edit-button {
+    width: 150px;
+    margin: 4px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+    border-radius: 12px;
+    padding: 4px 6px;
+    background: rgb(237, 114, 77);
+    transition: all 0.13s ease-in;
+    box-shadow: 2px 12px 8px -10px rgba(0, 0, 0, 0.3);
+}

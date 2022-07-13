@@ -1,5 +1,5 @@
 import * as React from "react";
-import './CreatePost.css';
+import './PostEdit.css';
 import {FormEvent, useEffect, useState} from "react";
 import {NewAdEntity} from 'types';
 import axios from "axios";
@@ -47,7 +47,7 @@ const updatePost = async (e: FormEvent) => {
                 <form onSubmit={updatePost}>
                     <div className="add-post-container">
                         <div className="add-post-text">
-                            <h2>Dodaj nowy post</h2>
+                            <h2>Edytuj Post</h2>
                         </div>
                         <div className="add-post-input">
                             <table>
@@ -74,7 +74,7 @@ const updatePost = async (e: FormEvent) => {
                                     <td>
                                         <textarea
                                             id="description"
-                                            placeholder="Twój post"
+                                            placeholder="Wczytywanie"
                                             value={post.description}
                                             onChange={e => updateForm('description', e.target.value)}
                                             required>
