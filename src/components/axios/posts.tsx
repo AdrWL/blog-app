@@ -18,10 +18,4 @@ export const typesConnect = {
 export const Connect = {
     getPost: () : Promise<NewAdEntity> => typesConnect.get('/'),
     createPost: (body: NewArticleAdEntity) : Promise<NewAdEntity> => typesConnect.post('/create', body),
-//     createID: (data: any) => axios.post(`http://localhost:3001/api/create`, JSON.stringify(data), {
-//                     method: 'POST',
-//                     headers: {
-//                         'Content-Type': 'application/json',
-//                     }
-// }),
 }

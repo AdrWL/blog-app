@@ -1,44 +1,28 @@
 import * as React from "react";
 import './CreatePost.css';
-import {SyntheticEvent, useState} from "react";
+import {FormEvent, useEffect, useState} from "react";
 import {NewAdEntity} from 'types';
 import axios from "axios";
-import {Link} from "react-router-dom";
 
+interface Props {
+    postsID: string | undefined;
+}
 
-function CreatePost() {
-    const [loading, setLoading] = useState(false);
-    const [id, setId] = useState('');
-    const [date, setDate] = useState('');
+function PostEdit(props: Props) {
     const [post, setPost] = useState<NewAdEntity>({
         title: '',
         description: '',
-        createdAt: ''
     })
 
-    const saveAd = async (e: SyntheticEvent) => {
-        e.preventDefault();
+    useEffect(() => {
+        (async () => {
+            const res = await axios.get(`http://localhost:3001/api/edit/${props.postsID}`);
+            setPost(res.data);
+        })();
+    }, []);
 
-        setLoading(true);
-
-        try {
-            const json = JSON.stringify(post)
-            const res = await axios.post(`http://localhost:3001/api/create`, json, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            const data = await res.data;
-            setId(data.id);
-            setDate(data.createdAt);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    if (loading === null) {
-        return <h1>Wczytywanie</h1>;
+    if (post === null) {
+        return null;
     }
 
     const updateForm = (key: string, value: string | number) => {
@@ -48,14 +32,19 @@ function CreatePost() {
         }));
     };
 
-    if (id) {
-        return  <Link to="/"><h2>Twój post "{post.title}" został poprawnie dodany do serwisu pod ID: {id} dnia {date}.</h2>Powrót</Link>;
-    }
+const updatePost = async (e: FormEvent) => {
+        e.preventDefault();
+
+    const res = await axios.put(`http://localhost:3001/api/`, {id: props.postsID, description: post.description})
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
+}
+
 
     return (
         <>
             <div className="add-post">
-                <form onSubmit={saveAd}>
+                <form onSubmit={updatePost}>
                     <div className="add-post-container">
                         <div className="add-post-text">
                             <h2>Dodaj nowy post</h2>
@@ -72,8 +61,8 @@ function CreatePost() {
                                             id="title"
                                             type="text"
                                             value={post.title}
-                                            onChange={e => updateForm('title', e.target.value)}
-                                            required>
+                                            disabled
+                                        >
                                         </input>
                                     </td>
                                 </tr>
@@ -92,30 +81,18 @@ function CreatePost() {
                                         </textarea>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <label htmlFor="createdAt">Utworzono dnia</label>
-                                    </td>
-                                    <td>
-                                        <input
-                                            id="createdAt"
-                                            type="date"
-                                            onChange={e => updateForm('createdAt', e.target.value)}
-                                        >
-                                        </input>
-                                    </td>
-                                </tr>
                                 </tbody>
                             </table>
                         </div>
                         <div className="add-post-btn">
-                            <button className="add-post-btn_click" type="submit">Dodaj</button>
+                            <button className="add-post-btn_click" type="submit">Aktualizuj</button>
                         </div>
                     </div>
                 </form>
             </div>
         </>
     )
-};
+}
+;
 
-export default CreatePost;
+export default PostEdit;

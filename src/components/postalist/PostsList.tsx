@@ -1,18 +1,26 @@
-import React, {Fragment } from 'react';
+import React from 'react';
 import {NewAdEntity} from 'types';
+import {PostsListRow} from "./PostsListRow";
 
-const PostsList = (props:NewAdEntity) => {
-    return (
-        <Fragment>
-            <ul>
-                    <li>
-                        <span>{props.id}</span>
-                        <span>{props.title}</span>
-                        <span>{props.description}</span>
-                    </li>
-            </ul>
-        </Fragment>
-    );
-};
+interface Props {
+    posts: NewAdEntity[] | unknown | any;
+}
 
-export default PostsList;
+
+export const PostsList = (props: Props) => (
+    <table>
+        <thead>
+        <tr>
+            <th>Tytuł</th>
+            <th>Treść</th>
+            <th>Data utworzenia</th>
+        </tr>
+        </thead>
+        <tbody>
+        {
+            props.posts.map(val => (
+                <PostsListRow val={val} key={val.id}/>))
+            }
+        </tbody>
+    </table>
+);
