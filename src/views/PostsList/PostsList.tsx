@@ -1,6 +1,6 @@
 import React from 'react';
 import {NewAdEntity} from 'types';
-import {PostsListRow} from "./PostsListRow";
+import {PostsListRow} from "../../../views/PostListRow/PostsListRow";
 
 interface Props {
     posts: NewAdEntity[] | unknown | any;

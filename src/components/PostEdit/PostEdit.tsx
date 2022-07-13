@@ -1,6 +1,6 @@
 import * as React from "react";
 import './PostEdit.css';
-import '../mainpage/MainPage.css';
+import '../../mainpage/MainPage.css';
 import {FormEvent, useEffect, useState} from "react";
 import {NewAdEntity} from 'types';
 import axios from "axios";

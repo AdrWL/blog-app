@@ -1,8 +1,8 @@
 import React, {SyntheticEvent, useEffect, useState} from 'react';
 import {NewAdEntity} from 'types';
 import {useParams} from "react-router-dom";
-import PostEdit from "./PostEdit";
-import PostSingleView from "./PostSingleView";
+import PostEdit from "../PostEdit/PostEdit";
+import PostSingleView from "../PostSingleView/PostSingleView";
 import axios from "axios";
 import './PostView.css';
 
@@ -11,7 +11,7 @@ const PostView = () => {
     const [isShownEdit, setIsShownEdit] = useState(false);
     const [buttonText, setButtonText] = useState('Edytuj');
     const [postInfo, setPostInfo] = useState<NewAdEntity | null>(null);
-    let {postID} = useParams();
+    const {postID} = useParams<"postID">();
 
     const handleClick = (e: SyntheticEvent) => {
         e.preventDefault();
@@ -19,7 +19,7 @@ const PostView = () => {
         setIsShownEdit(current => !current);
     }
 
-    const toggle = (e: SyntheticEvent) => {
+    const toggle = () => {
         if (buttonText == "Wróć") {
             setButtonText("Edytuj")
         } else if (buttonText == "Edytuj") {
@@ -30,7 +30,7 @@ const PostView = () => {
     const onClick = (e: SyntheticEvent) => {
         e.preventDefault();
         handleClick(e);
-        toggle(e)
+        toggle()
     }
 
     useEffect(() => {

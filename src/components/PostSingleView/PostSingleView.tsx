@@ -1,12 +1,12 @@
 import React, {MouseEvent, useState} from 'react';
 import {NewAdEntity} from 'types';
 import './PostSingleView.css';
-import '../mainpage/MainPage.css';
+import '../../mainpage/MainPage.css';
 import {Link} from "react-router-dom";
 import axios from "axios";
 
 interface Props {
-    post: NewAdEntity[] | unknown | any;
+    post: NewAdEntity;
 }
 
 function PostSingleView(props: Props) {
