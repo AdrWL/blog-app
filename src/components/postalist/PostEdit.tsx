@@ -1,14 +1,18 @@
 import * as React from "react";
 import './PostEdit.css';
+import '../mainpage/MainPage.css';
 import {FormEvent, useEffect, useState} from "react";
 import {NewAdEntity} from 'types';
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 interface Props {
     postsID: string | undefined;
 }
 
 function PostEdit(props: Props) {
+    const [loading, setLoading] = useState(false);
+    const [UpdateData, setUpdateData] = useState('');
     const [post, setPost] = useState<NewAdEntity>({
         title: '',
         description: '',
@@ -32,46 +36,88 @@ function PostEdit(props: Props) {
         }));
     };
 
-const updatePost = async (e: FormEvent) => {
+    const updatePost = async (e: FormEvent) => {
         e.preventDefault();
+        setLoading(true);
+        try {
+            const res = await axios.put(`http://localhost:3001/api/`, {
+                id: props.postsID,
+                description: post.description,
+            })
+            setUpdateData(res.data)
+        }
+        finally {
+            setLoading(false);
+        }
+    }
 
-    const res = await axios.put(`http://localhost:3001/api/`, {id: props.postsID, description: post.description})
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
-}
+    if (loading === null) {
+        return (
+            <div className="spiner_container">
+                <div className="lds-spinner">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        )
+    }
 
 
-    return (
-        <>
-            <div className="add-post">
-                <form onSubmit={updatePost}>
-                    <div className="add-post-container">
-                        <div className="add-post-text">
-                            <h2>Edytuj Post</h2>
-                        </div>
-                        <div className="add-post-input">
-                            <table>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <label htmlFor="title">Tytuł</label>
-                                    </td>
-                                    <td>
-                                        <input
-                                            id="title"
-                                            type="text"
-                                            value={post.title}
-                                            disabled
-                                        >
-                                        </input>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label htmlFor="description">
-                                        </label>
-                                    </td>
-                                    <td>
+    if (UpdateData) {
+        return (
+            <div className="add-info-container">
+                <div className="add-info">
+                    Post poprawnie edytowany
+                    <Link className="add-info-back" to="/">Powrót</Link>
+                </div>
+                <div className="box">
+                </div>
+            </div>
+        )
+    }
+
+
+return (
+    <>
+        <div className="add-post">
+            <form onSubmit={updatePost}>
+                <div className="add-post-container">
+                    <div className="add-post-text">
+                        <h2>Edytuj Post</h2>
+                    </div>
+                    <div className="add-post-input">
+                        <table>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <label htmlFor="title">Tytuł</label>
+                                </td>
+                                <td>
+                                    <input
+                                        id="title"
+                                        type="text"
+                                        value={post.title}
+                                        disabled
+                                    >
+                                    </input>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label htmlFor="description">
+                                    </label>
+                                </td>
+                                <td>
                                         <textarea
                                             id="description"
                                             placeholder="Wczytywanie"
@@ -79,19 +125,19 @@ const updatePost = async (e: FormEvent) => {
                                             onChange={e => updateForm('description', e.target.value)}
                                             required>
                                         </textarea>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div className="add-post-btn">
-                            <button className="add-post-btn_click" type="submit">Aktualizuj</button>
-                        </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
-                </form>
-            </div>
-        </>
-    )
+                    <div className="add-post-btn">
+                        <button className="add-post-btn_click" type="submit">Aktualizuj</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </>
+)
 }
 ;
 
