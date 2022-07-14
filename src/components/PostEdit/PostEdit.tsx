@@ -1,10 +1,10 @@
 import * as React from "react";
 import './PostEdit.css';
-import '../../mainpage/MainPage.css';
 import {FormEvent, useEffect, useState} from "react";
 import {NewAdEntity} from 'types';
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {Loading} from "../common/Loading/Loading";
 
 interface Props {
     postsID: string | undefined;
@@ -52,24 +52,7 @@ function PostEdit(props: Props) {
     }
 
     if (loading === null) {
-        return (
-            <div className="spiner_container">
-                <div className="lds-spinner">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-            </div>
-        )
+        return <Loading/>
     }
 
 

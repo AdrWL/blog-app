@@ -1,9 +1,9 @@
 import React, {MouseEvent, useState} from 'react';
 import {NewAdEntity} from 'types';
 import './PostSingleView.css';
-import '../../mainpage/MainPage.css';
 import {Link} from "react-router-dom";
 import axios from "axios";
+import {Loading} from "../common/Loading/Loading";
 
 interface Props {
     post: NewAdEntity;
@@ -32,24 +32,7 @@ function PostSingleView(props: Props) {
     }
 
     if (loading === null) {
-        return (
-            <div className="spiner_container">
-                <div className="lds-spinner">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-            </div>
-        )
+        return <Loading/>
     }
 
     if (DeleteData) {

@@ -1,11 +1,11 @@
 import * as React from "react";
-import Header from "./components/header/Header";
+import Header from "./components/Header/Header";
 import './App.css';
 import {Route, Routes} from "react-router-dom";
 import {SearchContext} from './contexts/search.context'
-import MainPage from "./components/mainpage/MainPage";
-import PostView from "./components/postalist/PostView";
-import CreatePost from "./components/createpost/CreatePost";
+import MainPage from "./components/MainPage/MainPage";
+import PostView from "./components/PostView/PostView";
+import CreatePost from "./components/CreatePost/CreatePost";
 import {useState} from "react";
 
 function App() {

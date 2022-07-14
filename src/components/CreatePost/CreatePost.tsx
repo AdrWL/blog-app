@@ -1,6 +1,6 @@
 import * as React from "react";
 import './CreatePost.css';
-import '../mainpage/MainPage.css';
+import '../MainPage/MainPage.css';
 import {SyntheticEvent, useState} from "react";
 import {NewAdEntity} from 'types';
 import axios from "axios";

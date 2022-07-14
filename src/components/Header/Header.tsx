@@ -1,7 +1,7 @@
 import './Header.css';
 import React, {SyntheticEvent, useContext, useState} from 'react';
 import {SearchContext} from "../../contexts/search.context";
-import {Btn} from "../common/Btn";
+import {Btn} from "../common/Button/Btn";
 
 function Header() {
     const {search, setSearch} = useContext(SearchContext);

@@ -3,10 +3,11 @@ import './MainPage.css';
 import {useEffect, useState} from "react";
 import {NewAdEntity} from 'types';
 import axios from "axios";
-import {PostsList} from "../postalist/PostsList";
+import {PostsList} from "../../views/PostsList/PostsList";
+import {Loading} from "../common/Loading/Loading";
 
 function MainPage() {
-    const [posts, setPosts] = useState<NewAdEntity[] | unknown[]>([])
+    const [posts, setPosts] =  useState<NewAdEntity[] | unknown[]>([])
     const [loading, setLoading] = useState(false);
 
     const fetchData = async () => {
@@ -26,24 +27,7 @@ function MainPage() {
     }, []);
 
     if (loading) {
-        return (
-            <div className="spiner_container">
-                <div className="lds-spinner">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-            </div>
-        )
+        return <Loading/>
     }
 
     return <>
