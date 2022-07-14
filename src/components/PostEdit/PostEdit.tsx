@@ -5,6 +5,7 @@ import {NewAdEntity} from 'types';
 import axios from "axios";
 import {Link} from "react-router-dom";
 import {Loading} from "../common/Loading/Loading";
+import {apiUrl} from "../config/api";
 
 interface Props {
     postsID: string | undefined;
@@ -20,7 +21,7 @@ function PostEdit(props: Props) {
 
     useEffect(() => {
         (async () => {
-            const res = await axios.get(`http://localhost:3001/api/edit/${props.postsID}`);
+            const res = await axios.get(`${apiUrl}/api/edit/${props.postsID}`);
             setPost(res.data);
         })();
     }, []);
@@ -40,7 +41,7 @@ function PostEdit(props: Props) {
         e.preventDefault();
         setLoading(true);
         try {
-            const res = await axios.put(`http://localhost:3001/api/`, {
+            const res = await axios.put(`${apiUrl}/api/`, {
                 id: props.postsID,
                 description: post.description,
             })
