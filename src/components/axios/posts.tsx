@@ -1,9 +1,10 @@
 import axios from 'axios';
 import {AxiosResponse} from "axios";
 import {NewAdEntity, NewArticleAdEntity} from 'types';
+import {apiUrl} from "../config/api";
 
 const instance = axios.create({
-    baseURL: 'http://localhost:3001/api',
+    baseURL: `${apiUrl}/api`,
     timeout: 15000,
 });
 

@@ -5,6 +5,7 @@ import PostEdit from "../PostEdit/PostEdit";
 import PostSingleView from "../PostSingleView/PostSingleView";
 import axios from "axios";
 import './PostView.css';
+import {apiUrl} from "../config/api";
 
 const PostView = () => {
     const [isShown, setIsShown] = useState(true);
@@ -35,7 +36,7 @@ const PostView = () => {
 
     useEffect(() => {
         (async () => {
-            const res = await axios.get(`http://localhost:3001/api/edit/${postID}`);
+            const res = await axios.get(`${apiUrl}/api/edit/${postID}`);
             setPostInfo(res.data);
         })();
     }, []);

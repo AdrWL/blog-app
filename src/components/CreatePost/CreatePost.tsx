@@ -5,6 +5,7 @@ import {SyntheticEvent, useState} from "react";
 import {NewAdEntity} from 'types';
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {apiUrl} from "../config/api";
 
 
 function CreatePost() {
@@ -24,7 +25,7 @@ function CreatePost() {
 
         try {
             const json = JSON.stringify(post)
-            const res = await axios.post(`http://localhost:3001/api/create`, json, {
+            const res = await axios.post(`${apiUrl}/api/create`, json, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

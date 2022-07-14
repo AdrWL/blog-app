@@ -6,6 +6,7 @@ import {SearchContext} from "../../context/search.context";
 import axios from "axios";
 import {PostsList} from "../../views/PostsList/PostsList";
 import {Loading} from "../common/Loading/Loading";
+import {apiUrl} from "../config/api";
 
 function MainPage() {
     // const {search} = useContext(SearchContext);
@@ -15,7 +16,7 @@ function MainPage() {
     const fetchData = async () => {
         setLoading(true);
         try {
-            await axios.get(`http://localhost:3001/api/`).then((data) => {
+            await axios.get(`${apiUrl}/api/`).then((data) => {
                 let dataArr: NewAdEntity[] = Array.from(data.data.posts);
                 setPosts(dataArr);
             });

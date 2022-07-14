@@ -4,6 +4,7 @@ import './PostSingleView.css';
 import {Link} from "react-router-dom";
 import axios from "axios";
 import {Loading} from "../common/Loading/Loading";
+import {apiUrl} from "../config/api";
 
 interface Props {
     post: NewAdEntity;
@@ -19,7 +20,7 @@ function PostSingleView(props: Props) {
         setLoading(true);
 
         try {
-            const res = await axios.delete(`http://localhost:3001/api/${props.post.id}`);
+            const res = await axios.delete(`${apiUrl}/api/${props.post.id}`);
             if ([400, 500].includes(res.status)) {
                 const error = await res;
                 alert(`Error occurred: ${error}`);
