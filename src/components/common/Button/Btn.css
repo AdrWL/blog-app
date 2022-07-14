@@ -1,0 +1,9 @@
+.btn {
+    border: 0;
+    background: #1cec05;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    text-decoration: none;
+}

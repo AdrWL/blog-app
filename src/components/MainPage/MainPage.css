@@ -1,0 +1,13 @@
+.list-post {
+    margin: auto;
+    border-radius: 12px;
+    background: linear-gradient(90deg, rgba(245, 245, 245, 0), rgba(247, 92, 3, 0.27));
+    padding: 2vh;
+    width: 70%;
+}
+
+
+.title-post {
+    font-size: 1.5rem;
+    padding: 1rem;
+}

@@ -1,0 +1,57 @@
+.post-single-view {
+    margin: auto;
+    border-radius: 12px;
+    background: linear-gradient(90deg, rgba(245, 245, 245, 0), rgba(247, 92, 3, 0.27));
+    padding: 2vh;
+    width: 70%;
+}
+
+.post-single-title{
+    color: #030303;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.post-single-description {
+    color: #030303;
+    word-spacing: 4px;
+}
+
+.back-button-link, .delete-button-link{
+    text-decoration: none;
+}
+
+
+.delete-button {
+    position: absolute;
+    top: 27%;
+    right: 2%;
+    width: 150px;
+}
+
+.back-button {
+    position: absolute;
+    top: 23%;
+    right: 2%;
+}
+
+.delete-button, .back-button {
+    margin: 4px;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+    border-radius: 12px;
+    padding: 4px 6px;
+    background: rgb(237, 114, 77);
+    box-shadow: 2px 12px 8px -10px rgba(0, 0, 0, 0.3);
+}
+
+.box {
+    height: 40px;
+    background: white;
+    width: 160px;
+    position: absolute;
+    top: 31%;
+    right: 2%;
+    z-index: 1;
+}
