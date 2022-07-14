@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import './MainPage.css';
 import {useEffect, useState} from "react";
 import {NewAdEntity} from 'types';
-import {SearchContext} from "../../contexts/search.context";
+import {SearchContext} from "../../context/search.context";
 import axios from "axios";
 import {PostsList} from "../../views/PostsList/PostsList";
 import {Loading} from "../common/Loading/Loading";
@@ -31,9 +31,9 @@ function MainPage() {
     // });
     // console.log(filtertPosts);
     //
-    // useEffect(() => {
-    //     fetchData();
-    // }, []);
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     if (loading) {
         return <Loading/>

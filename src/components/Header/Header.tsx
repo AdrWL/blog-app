@@ -1,16 +1,16 @@
 import './Header.css';
 import React, {SyntheticEvent, useContext, useState} from 'react';
-import {SearchContext} from "../../contexts/search.context";
+import {SearchContext} from "../../context/search.context";
 import {Btn} from "../common/Button/Btn";
 
 function Header() {
-    // const {search, setSearch} = useContext(SearchContext);
-    // const [inputVal, setInputVal] = useState(search);
-    //
-    // const setSearchFromLocalState = (e: SyntheticEvent) => {
-    //     e.preventDefault();
-    //     setSearch(inputVal);
-    // };
+    const {search, setSearch} = useContext(SearchContext);
+    const [inputVal, setInputVal] = useState(search);
+
+    const setSearchFromLocalState = (e: SyntheticEvent) => {
+        e.preventDefault();
+        setSearch(inputVal);
+    };
 
     return (
         <>

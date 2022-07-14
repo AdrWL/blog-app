@@ -2,11 +2,11 @@ import * as React from "react";
 import Header from "./components/Header/Header";
 import './App.css';
 import {Route, Routes} from "react-router-dom";
-import {SearchContext} from './contexts/search.context'
 import MainPage from "./components/MainPage/MainPage";
 import PostView from "./components/PostView/PostView";
 import CreatePost from "./components/CreatePost/CreatePost";
 import {useState} from "react";
+import { SearchContext } from "./context/search.context";
 
 function App() {
     const [search, setSearch] = useState('')
