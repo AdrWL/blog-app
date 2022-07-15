@@ -36,7 +36,7 @@ const PostView = () => {
 
     useEffect(() => {
         (async () => {
-            const res = await axios.get(`${apiUrl}/api/edit/${postID}`);
+            const res = await axios.get(`${apiUrl}/edit/${postID}`);
             setPostInfo(res.data);
         })();
     }, []);
