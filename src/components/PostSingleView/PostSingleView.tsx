@@ -20,7 +20,7 @@ function PostSingleView(props: Props) {
         setLoading(true);
 
         try {
-            const res = await axios.delete(`${apiUrl}/api/${props.post.id}`);
+            const res = await axios.delete(`${apiUrl}/${props.post.id}`);
             if ([400, 500].includes(res.status)) {
                 const error = await res;
                 alert(`Error occurred: ${error}`);

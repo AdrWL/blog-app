@@ -16,7 +16,7 @@ function MainPage() {
     const fetchData = async () => {
         setLoading(true);
         try {
-            await axios.get(`${apiUrl}/api/`).then((data) => {
+            await axios.get(`${apiUrl}`).then((data) => {
                 let dataArr: NewAdEntity[] = Array.from(data.data.posts);
                 setPosts(dataArr);
             });

@@ -25,7 +25,7 @@ function CreatePost() {
 
         try {
             const json = JSON.stringify(post)
-            const res = await axios.post(`${apiUrl}/api/create`, json, {
+            const res = await axios.post(`${apiUrl}/create`, json, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

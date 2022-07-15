@@ -21,7 +21,7 @@ function PostEdit(props: Props) {
 
     useEffect(() => {
         (async () => {
-            const res = await axios.get(`${apiUrl}/api/edit/${props.postsID}`);
+            const res = await axios.get(`${apiUrl}/edit/${props.postsID}`);
             setPost(res.data);
         })();
     }, []);
@@ -41,7 +41,7 @@ function PostEdit(props: Props) {
         e.preventDefault();
         setLoading(true);
         try {
-            const res = await axios.put(`${apiUrl}/api/`, {
+            const res = await axios.put(`${apiUrl}`, {
                 id: props.postsID,
                 description: post.description,
             })
