@@ -25,6 +25,9 @@
 ## Here is my first FE and BE app, simple blog app with create new post, list all posts, edit post, delete post. 
 In progress i want to add search option, auto translate title of blog to en and search for img in free repository. For now images have auto add function with random images by title.
 
+FE in REACT to see BE please go to [Blog App BE](https://github.com/AdrWL/blog-app-back)
+Working page in [Blog App](https://mega.blog.networkmanager.pl/)
+
 ![818b5402a2dd4a97b00c0faca3b64ea6](https://user-images.githubusercontent.com/105071559/179188311-a45a9768-0153-485a-aded-84f70da51119.png)
 
 
