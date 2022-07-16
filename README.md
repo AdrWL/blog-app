@@ -43,7 +43,6 @@ Adding new post
 
 ![add post](https://user-images.githubusercontent.com/105071559/179190788-6529dffc-aafd-41a1-9412-ccd9641dcfcc.PNG)
 
-![carbon (1)](https://user-images.githubusercontent.com/105071559/179191401-52489245-43dc-49c3-8e1d-cea3f28062dc.png)
 
 
 View single post
